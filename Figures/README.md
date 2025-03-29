@@ -614,4 +614,4 @@ ggplot(self_reported) +
         size = 0.5)+
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
-![](Gself_reported.png)
+![](self_reported.png)
