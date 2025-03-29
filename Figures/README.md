@@ -203,6 +203,7 @@ grid.arrange(
     ncol = 1, heights = c(1, 20))
 ```
 
+![](Gaze_negative.png)
 
 ## Erotic
 
@@ -290,7 +291,7 @@ grid.arrange(
         ncol = 1, nrow = 3, heights = c(3, 3, 3)),
     ncol = 1, heights = c(1, 20))
 ```
-
+![](Gaze_erotic.png)
 
 ## PUPIL
 
@@ -570,6 +571,7 @@ grid.arrange(
             heights = c(1, 20))
 ```
 
+![](Pupil_no_colours.png)
 
 # Self-reported
 
@@ -612,3 +614,4 @@ ggplot(self_reported) +
         size = 0.5)+
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
+![](Gself_reported.png)
