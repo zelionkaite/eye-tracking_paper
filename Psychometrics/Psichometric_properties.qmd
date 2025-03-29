@@ -1,0 +1,100 @@
+---
+title: "Psychometric_properties"
+author: "Zelionkaite"
+---
+
+# Libraries
+
+```{r}
+library(psych)
+
+attach(metrics)
+```
+
+## GAD
+
+```{r}
+alpha(metrics[, c("GAD1", "GAD2", "GAD3", "GAD4", "GAD5", "GAD6", "GAD7")])
+```
+
+# PANAS
+
+## PA
+
+```{r}
+alpha(metrics[, c("PA1", "PA2", "PA3", "PA4", "PA5", "PA6", "PA7", "PA8", "PA9", "PA10", "PA11")])
+```
+
+## NA
+
+```{r}
+alpha(metrics[, c("NA1", "NA2", "NA3", "NA4", "NA5", "NA6", "NA7", "NA8", "NA9", "NA10", "NA11")])
+```
+
+# TAS
+
+## Difficulty describing feelings
+
+```{r}
+alpha(metrics[, c("TAS2D", "TAS4D", "TAS11D", "TAS12D", "TAS17D")])
+```
+
+## Difficulty identifying feelings
+
+```{r}
+alpha(metrics[, c("TAS1I", "TAS3I", "TAS6I", "TAS7I", "TAS9I", "TAS13I", "TAS14I")])
+
+
+```
+
+## Externaly oriented thinking
+
+```{r}
+alpha(metrics[, c("TAS5EX", "TAS8EX", "TAS10EX", "TAS15EX", "TAS16EX", "TAS18EX", "TAS19EX", "TAS20EX")])
+```
+
+## Overall 
+
+```{r}
+alpha(metrics[, c("TAS1I", "TAS3I", "TAS6I", "TAS7I", "TAS9I", "TAS13I", "TAS14I", "TAS2D", "TAS4D", "TAS11D", "TAS12D", "TAS17D", "TAS5EX", "TAS8EX", "TAS10EX", "TAS15EX", "TAS16EX", "TAS18EX", "TAS19EX", "TAS20EX")])
+```
+
+# HEXACO
+
+## Honesty
+
+```{r}
+alpha(metrics[, c("H6", "H12",	"H18",	"H24",	"H30", "H36", "H42",	"H48", "H54", "H60")])
+```
+
+## Emotionality
+
+```{r}
+alpha(metrics[, c("E5",	"E11",	"E17",	"E23",	"E29",	"E35",	"E41",	"E47",	"E53",	"E59"	)])
+```
+
+## Extroversion
+
+```{r}
+alpha(metrics[, c("Ex4",	"Ex10",	"Ex16",	"Ex22",	"Ex28", "Ex34",	"Ex40",	"Ex46",	"Ex52",	"Ex58")])
+```
+
+## Agreeableness
+
+```{r}
+alpha(metrics[, c("A3",	"A9",	"A15",	"A21",	"A27",	"A33",	"A39",	"A45", "A51",	"A57")])
+```
+
+# Conscientiousness
+
+```{r}
+alpha(metrics[, c("C2",	"C8",	"C14",	"C20",	"C26",	"C32",	"C38",	"C44",	"C50",	"C56")])
+
+```
+
+## Openness to experience
+
+```{r}
+alpha(metrics[, c("O1",	"O7",	"O13",	"O19",	"O25",	"O31",	"O37",	"O43",	"O49",	"O55")])
+
+```
