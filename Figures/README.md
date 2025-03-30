@@ -53,10 +53,8 @@ dwell_time_neut <- ggplot(Figure_gaze_neutral) +
           axis.text.y = element_text(family = 'Times New Roman', color = 'black'))+
   theme(legend.position="top", legend.margin = margin(t = 0, r = 0, b = 0, l = 0))+
     scale_fill_manual('', values = c("NC" = "sandybrown", "OC" = "darkturquoise", "Men" = "springgreen3")) + 
-    scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), limits = c("Background", "Body", "Face")) +
    guides(fill = FALSE)+
-  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), 
-                     limits = c("Background", "Body", "Face"))+
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), limits = c("Background", "Body", "Face"))+
     annotate("text", x = 2.85, y = 67, label = "*", size = 9, color = "black")+ 
     geom_segment(aes(x = 2.7, xend = 3, y = 65, yend = 65), color = "black", size = 0.5)+
     annotate("text", x = 3, y = 73, label = "**", size = 9, color = "black")+ 
@@ -141,10 +139,8 @@ dwell_time_negative <- ggplot(Figure_gaze_negative) +
           axis.text.y = element_text(family = 'Times New Roman', color = 'black'))+
   theme(legend.position="top", legend.margin = margin(t = 0, r = 0, b = 0, l = 0))+
     scale_fill_manual('', values = c("NC" = "sandybrown", "OC" = "darkturquoise", "Men" = "springgreen3")) + 
-    scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), limits = c("Background", "Erogenous area", "Body", "Face")) +
    guides(fill = FALSE)+
-  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), 
-                     limits = c("Background", "Mutilations", "Intact"))+
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), limits = c("Background", "Mutilations", "Intact"))+
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
@@ -219,10 +215,8 @@ dwell_time_erotic <- ggplot(Figure_gaze_erotic) +
           axis.text.y = element_text(family = 'Times New Roman', color = 'black'))+
   theme(legend.position="top", legend.margin = margin(t = 0, r = 0, b = 0, l = 0))+
     scale_fill_manual('', values = c("NC" = "sandybrown", "OC" = "darkturquoise", "Men" = "springgreen3")) + 
-    scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), limits = c("Background", "Erogenous area", "Body", "Face")) +
    guides(fill = FALSE)+
-  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), 
-                     limits = c("Background", "Erogenous area", "Body", "Face"))+
+  scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), limits = c("Background", "Erogenous area", "Body", "Face"))+
     annotate("text", x = 3.85, y = 76, label = "***", size = 9, color = "black")+ 
     geom_segment(aes(x = 3.7, xend = 4, y = 74, yend = 74), color = "black", size = 0.5)+
     annotate("text", x = 4, y = 82, label = "***", size = 9, color = "black")+ 
