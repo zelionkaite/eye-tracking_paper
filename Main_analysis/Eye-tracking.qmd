@@ -1,0 +1,585 @@
+---
+title: "Eye-tracking paper"
+author: "Zelionkaite"
+format: gfm
+editor: visual
+---
+
+## Libraries
+
+```{r}
+library("tidyverse")
+library("rstatix")
+library("emmeans")
+library("dplyr")
+```
+
+```{r}
+load("eye_tracking_data.RData")
+```
+
+# self-reported data
+
+## Questionnaires
+
+```{r}
+self_reported%>%
+ group_by(Group2) %>%
+  summarise(M = mean(TAS_overall),
+            SD = sd(TAS_overall))
+
+### QUESTIONNAIRES 
+
+  Alexithymia <- aov(TAS_overall ~ Group2, data = self_reported)
+summary(Alexithymia)
+pairwise.t.test(self_reported$TAS_overall, self_reported$Group2, p.adjust.method = "holm")
+
+  Alexithymia_describe <- aov(TAS_Diff_Describ_Feel ~ Group2, data = self_reported)
+summary(Alexithymia_describe)
+pairwise.t.test(self_reported$TAS_Diff_Describ_Feel, self_reported$Group2, p.adjust.method = "holm")
+
+  Alexithymia_identify <- aov(TAS_Diff_Identify_Feel ~ Group2, data = self_reported)
+summary(Alexithymia_identify)
+pairwise.t.test(self_reported$TAS_Diff_Identify_Feel, self_reported$Group2, p.adjust.method = "holm")
+
+  Alexithymia_external <- aov(TAS_Exter_Orient_Think ~ Group2, data = self_reported)
+summary(Alexithymia_external)
+pairwise.t.test(self_reported$TAS_Exter_Orient_Think, self_reported$Group2, p.adjust.method = "holm")
+
+
+  PA <- aov(PA ~ Group2, data = self_reported)
+summary(PA)
+    pairwise.t.test(self_reported$PA, self_reported$Group2, p.adjust.method = "holm")
+    
+
+  na <- aov(NA2 ~ Group2, data = self_reported)
+summary(na)
+  pairwise.t.test(self_reported$NA2, self_reported$Group2, p.adjust.method = "holm")
+  
+  Age <- aov(Age ~ Group2, data = self_reported)
+summary(Age)
+  pairwise.t.test(self_reported$Age, self_reported$Group2, p.adjust.method = "holm")
+
+  BMI <- aov(BMI ~ Group2, data = self_reported)
+summary(BMI)
+    pairwise.t.test(self_reported$BMI, self_reported$Group2, p.adjust.method = "holm")
+
+  ANX <- aov(Anxiety ~ Group2, data = self_reported)
+summary(ANX)
+    pairwise.t.test(self_reported$Anxiety, self_reported$Group2, p.adjust.method = "holm")
+
+  Education <- aov(Education_time ~ Group2, data = self_reported)
+summary(Education)
+  pairwise.t.test(self_reported$Education_time, self_reported$Group2, p.adjust.method = "holm")
+
+  Honesty <- aov(Honesty ~ Group2, data = self_reported)
+summary(Honesty)
+  pairwise.t.test(self_reported$Honesty, self_reported$Group2, p.adjust.method = "holm")  
+  
+  Emotionality <- aov(Emotionality ~ Group2, data = self_reported)
+summary(Emotionality)
+  pairwise.t.test(self_reported$Emotionality, self_reported$Group2, p.adjust.method = "holm")
+  
+  Extraversion <- aov(Extraversion ~ Group2, data = self_reported)
+summary(Extraversion)
+  pairwise.t.test(self_reported$Extraversion, self_reported$Group2, p.adjust.method = "holm")
+  
+  Agreeableness <- aov(Agreeableness ~ Group2, data = self_reported)
+summary(Agreeableness)
+  pairwise.t.test(self_reported$Agreeableness, self_reported$Group2, p.adjust.method = "holm")
+  
+  
+  Conscientiousness <- aov(Conscientiousness ~ Group2, data = self_reported)
+summary(Conscientiousness)
+  pairwise.t.test(self_reported$Conscientiousness, self_reported$Group2, p.adjust.method = "holm")
+  
+  Openness_to_experience <- aov(Openness_to_experience ~ Group2, data = self_reported)
+summary(Openness_to_experience)
+  pairwise.t.test(self_reported$Openness_to_experience, self_reported$Group2, p.adjust.method = "holm")
+    
+### SEX STEROIDS    
+    ## SEX
+    
+  testo <- aov(Testosterone ~ Group2, data = self_reported)
+summary(testo)
+    pairwise.t.test(self_reported$Testosterone, self_reported$Group2, p.adjust.method = "holm")
+    
+    ## WOMEN
+#self_reported_women <- self_reported %>% filter(Group2 != "Men")
+
+prog <-aov(Progesterone ~ Group2, data = self_reported_women)
+summary(prog)
+  pairwise.t.test(self_reported_women$Progesterone, self_reported_women$Group2, p.adjust.method = "holm")
+  
+testo <- aov(Testosterone ~ Group2, data = self_reported_women)
+summary(testo)
+    pairwise.t.test(self_reported_women$Testosterone, self_reported_women$Group2, p.adjust.method = "holm")
+    
+    
+```
+
+## Arousal/ valence
+
+```{r}
+### NEUTRAL
+  Arousal_neutral <- aov(Arousal_neutral ~ Group2, data = self_reported)
+summary(Arousal_neutral)
+pairwise.t.test(self_reported$Arousal_neutral, self_reported$Group2, p.adjust.method = "holm")
+
+  Valence_neutral <- aov(Valence_neutral ~ Group2, data = self_reported)
+summary(Valence_neutral)
+pairwise.t.test(self_reported$Valence_neutral, self_reported$Group2, p.adjust.method = "holm")
+
+### NEGATIVE
+  Arousal_negative <- aov(Arousal_negative ~ Group2, data = self_reported)
+summary(Arousal_negative)
+pairwise.t.test(self_reported$Arousal_negative, self_reported$Group2, p.adjust.method = "holm")
+
+  Valence_negative <- aov(Valence_negative ~ Group2, data = self_reported)
+summary(Valence_negative)
+pairwise.t.test(self_reported$Valence_negative, self_reported$Group2, p.adjust.method = "holm")
+
+### EROTIC
+  Arousal_erotic <- aov(Arousal_erotic ~ Group2, data = self_reported)
+summary(Arousal_erotic)
+pairwise.t.test(self_reported$Arousal_erotic, self_reported$Group2, p.adjust.method = "holm")
+
+  Valence_erotic <- aov(Valence_erotic ~ Group2, data = self_reported)
+summary(Valence_erotic)
+pairwise.t.test(self_reported$Valence_erotic, self_reported$Group2, p.adjust.method = "holm")
+```
+
+## Emotional arousal
+
+```{r}
+Emot_arousal%>%
+  group_by(group, Condition) %>%
+  summarise(M = mean(values),
+            SD = sd(values))
+
+
+
+RM_ANOVA_arousal <- anova_test(Emot_arousal, dv = values, wid = id, within = Condition, between = group, effect.size = "pes")
+
+RM_ANOVA_arousal$`Mauchly's Test for Sphericity`
+RM_ANOVA_arousal$`Sphericity Corrections`
+
+get_anova_table(RM_ANOVA_arousal)
+
+
+
+#posthoc
+  RM_ANOVA_PostHoc_arousal <- Emot_arousal %>%
+  emmeans_test(values ~ Condition, p.adjust.method = "holm")
+print(RM_ANOVA_PostHoc_arousal)
+  RM_ANOVA_PostHoc_arousal_grupe <- Emot_arousal %>%
+  emmeans_test(values ~ group, p.adjust.method = "holm")
+print(RM_ANOVA_PostHoc_arousal_grupe)
+
+RM_ANOVA_PostHoc_arousal_interact <- Emot_arousal %>%
+  group_by(Condition) %>%
+  emmeans_test(values ~ group, p.adjust.method = "holm")
+print(RM_ANOVA_PostHoc_arousal_interact)
+
+```
+
+# Gaze parameters
+
+## Neutral
+
+### Dwell time
+
+```{r}
+
+
+Gaze_neutral%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(dwell_time),
+            SD = sd(dwell_time))
+
+
+Neut_RM_ANOVA_dwell_time <- anova_test(Gaze_neutral, dv = dwell_time, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Neut_RM_ANOVA_dwell_time$`Mauchly's Test for Sphericity`
+Neut_RM_ANOVA_dwell_time$`Sphericity Corrections`
+
+get_anova_table(Neut_RM_ANOVA_dwell_time)
+
+
+#posthoc
+Neut_RM_ANOVA_dwell_time_interact <- Gaze_neutral %>%
+  group_by(AOI2) %>%
+  emmeans_test(dwell_time ~ Group2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_dwell_time_interact)
+             
+Neut_RM_ANOVA_dwell_time_zonos <- Gaze_neutral %>%
+  emmeans_test(dwell_time ~ AOI2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_dwell_time_zonos)
+
+Neut_RM_ANOVA_dwell_time_grupe <- Gaze_neutral %>%
+  emmeans_test(dwell_time ~Group2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_dwell_time_grupe)
+```
+
+### Return probability
+
+```{r}
+
+Gaze_neutral%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(return_prob),
+            SD = sd(return_prob))
+
+
+
+
+
+Neut_RM_ANOVA_grizimo_tik <- anova_test(Gaze_neutral, dv = return_prob, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Neut_RM_ANOVA_grizimo_tik$`Mauchly's Test for Sphericity`
+Neut_RM_ANOVA_grizimo_tik$`Sphericity Corrections`
+
+
+get_anova_table(Neut_RM_ANOVA_grizimo_tik)
+
+
+
+#posthoc
+Neut_RM_ANOVA_grizimo_tik_interact <- Gaze_neutral %>%
+  group_by(AOI2) %>%
+  emmeans_test(return_prob ~ Group2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_grizimo_tik_interact)
+             
+Neut_RM_ANOVA_grizimo_tik_zonos <- Gaze_neutral %>%
+  emmeans_test(return_prob ~ AOI2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_grizimo_tik_zonos)
+
+Neut_RM_ANOVA_grizimo_tik_grupe <- Gaze_neutral %>%
+  emmeans_test(return_prob ~Group2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_grizimo_tik_grupe)
+```
+
+### Looking probability
+
+```{r}
+
+Gaze_neutral%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(looking_prob),
+            SD = sd(looking_prob))
+
+
+
+
+
+Neut_RM_ANOVA_looking_prob <- anova_test(Gaze_neutral, dv = looking_prob, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Neut_RM_ANOVA_looking_prob$`Mauchly's Test for Sphericity`
+Neut_RM_ANOVA_looking_prob$`Sphericity Corrections`
+
+
+get_anova_table(Neut_RM_ANOVA_looking_prob)
+
+
+
+#posthoc
+Neut_RM_ANOVA_looking_prob_interact <- Gaze_neutral %>%
+  group_by(AOI2) %>%
+  emmeans_test(looking_prob ~ Group2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_looking_prob_interact)
+             
+Neut_RM_ANOVA_looking_prob_zonos <- Gaze_neutral %>%
+  emmeans_test(looking_prob ~ AOI2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_looking_prob_zonos)
+
+Neut_RM_ANOVA_looking_prob_grupe <- Gaze_neutral %>%
+  emmeans_test(looking_prob ~Group2, p.adjust.method = "holm")
+print(Neut_RM_ANOVA_looking_prob_grupe)
+
+```
+
+## Negative
+
+### Dwell time
+
+```{r}
+
+Gaze_negative%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(dwell_time),
+            SD = sd(dwell_time))
+
+Neig_RM_ANOVA_dwell_time <- anova_test(Gaze_negative, dv = dwell_time, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Neig_RM_ANOVA_dwell_time$`Mauchly's Test for Sphericity`
+Neig_RM_ANOVA_dwell_time$`Sphericity Corrections`
+
+Neig_RM_ANOVA_dwell_time$`emmeans`
+
+get_anova_table(Neig_RM_ANOVA_dwell_time)
+
+
+#posthoc
+Neig_RM_ANOVA_dwell_time_interact <- Gaze_negative %>%
+  group_by(AOI2) %>%
+  emmeans_test(dwell_time ~ Group2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_dwell_time_interact)
+             
+Neig_RM_ANOVA_dwell_time_zonos <- Gaze_negative %>%
+  emmeans_test(dwell_time ~ AOI2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_dwell_time_zonos)
+
+Neig_RM_ANOVA_dwell_time_grupe <- Gaze_negative %>%
+  emmeans_test(dwell_time ~Group2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_dwell_time_grupe)
+
+```
+
+### Return probability
+
+```{r}
+
+Gaze_negative%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(return_prob),
+            SD = sd(return_prob))
+
+Neig_RM_ANOVA_return_prob <- anova_test(Gaze_negative, dv = return_prob, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Neig_RM_ANOVA_return_prob$`Mauchly's Test for Sphericity`
+Neig_RM_ANOVA_return_prob$`Sphericity Corrections`
+
+Neig_RM_ANOVA_return_prob$`emmeans`
+
+get_anova_table(Neig_RM_ANOVA_return_prob)
+
+
+#posthoc
+Neig_RM_ANOVA_return_prob_interact <- Gaze_negative %>%
+  group_by(AOI2) %>%
+  emmeans_test(return_prob ~ Group2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_return_prob_interact)
+             
+Neig_RM_ANOVA_return_prob_zonos <- Gaze_negative %>%
+  emmeans_test(return_prob ~ AOI2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_return_prob_zonos)
+
+Neig_RM_ANOVA_return_prob_grupe <- Gaze_negative %>%
+  emmeans_test(return_prob ~Group2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_return_prob_grupe)
+```
+
+### Looking probability
+
+```{r}
+
+Gaze_negative%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(looking_prob),
+            SD = sd(looking_prob))
+
+Neig_RM_ANOVA_looking_prob <- anova_test(Gaze_negative, dv = looking_prob, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Neig_RM_ANOVA_looking_prob$`Mauchly's Test for Sphericity`
+Neig_RM_ANOVA_looking_prob$`Sphericity Corrections`
+
+Neig_RM_ANOVA_looking_prob$`emmeans`
+
+get_anova_table(Neig_RM_ANOVA_looking_prob)
+
+
+#posthoc
+Neig_RM_ANOVA_looking_prob_interact <- Gaze_negative %>%
+  group_by(AOI2) %>%
+  emmeans_test(looking_prob ~ Group2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_looking_prob_interact)
+             
+Neig_RM_ANOVA_looking_prob_zonos <- Gaze_negative %>%
+  emmeans_test(looking_prob ~ AOI2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_looking_prob_zonos)
+
+Neig_RM_ANOVA_looking_prob_grupe <- Gaze_negative %>%
+  emmeans_test(looking_prob ~Group2, p.adjust.method = "holm")
+print(Neig_RM_ANOVA_looking_prob_grupe)
+```
+
+## Erotic
+
+### Dwell time
+
+```{r}
+
+Gaze_erotic%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(dwell_time),
+            SD = sd(dwell_time))
+
+Teig_RM_ANOVA_dwell_time <- anova_test(Gaze_erotic, dv = dwell_time, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Teig_RM_ANOVA_dwell_time$`Mauchly's Test for Sphericity`
+Teig_RM_ANOVA_dwell_time$`Sphericity Corrections`
+
+Teig_RM_ANOVA_dwell_time$`emmeans`
+
+get_anova_table(Teig_RM_ANOVA_dwell_time)
+
+
+#posthoc
+Teig_RM_ANOVA_dwell_time_interact <- Gaze_erotic %>%
+  group_by(AOI2) %>%
+  emmeans_test(dwell_time ~ Group2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_dwell_time_interact)
+             
+Teig_RM_ANOVA_dwell_time_zonos <- Gaze_erotic %>%
+  emmeans_test(dwell_time ~ AOI2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_dwell_time_zonos)
+
+Teig_RM_ANOVA_dwell_time_grupe <- Gaze_erotic %>%
+  emmeans_test(dwell_time ~Group2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_dwell_time_grupe)
+```
+
+### Return probability
+
+```{r}
+
+Gaze_erotic%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(return_prob),
+            SD = sd(return_prob))
+
+Teig_RM_ANOVA_return_prob <- anova_test(Gaze_erotic, dv = return_prob, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Teig_RM_ANOVA_return_prob$`Mauchly's Test for Sphericity`
+Teig_RM_ANOVA_return_prob$`Sphericity Corrections`
+
+Teig_RM_ANOVA_return_prob$`emmeans`
+
+get_anova_table(Teig_RM_ANOVA_return_prob)
+
+
+#posthoc
+Teig_RM_ANOVA_return_prob_interact <- Gaze_erotic %>%
+  group_by(AOI2) %>%
+  emmeans_test(return_prob ~ Group2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_return_prob_interact)
+             
+Teig_RM_ANOVA_return_prob_zonos <- Gaze_erotic %>%
+  emmeans_test(return_prob ~ AOI2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_return_prob_zonos)
+
+Teig_RM_ANOVA_return_prob_grupe <- Gaze_erotic %>%
+  emmeans_test(return_prob ~Group2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_return_prob_grupe)
+```
+
+### Looking probability
+
+```{r}
+Gaze_erotic%>%
+  group_by(Group2, AOI2) %>%
+  summarise(M = mean(looking_prob),
+            SD = sd(looking_prob))
+
+Teig_RM_ANOVA_looking_prob <- anova_test(Gaze_erotic, dv = looking_prob, wid = id, within = AOI2, between = Group2, effect.size = "pes")
+
+Teig_RM_ANOVA_looking_prob$`Mauchly's Test for Sphericity`
+Teig_RM_ANOVA_looking_prob$`Sphericity Corrections`
+
+Teig_RM_ANOVA_looking_prob$`emmeans`
+
+get_anova_table(Teig_RM_ANOVA_looking_prob)
+
+
+#posthoc
+Teig_RM_ANOVA_looking_prob_interact <- Gaze_erotic %>%
+  group_by(AOI2) %>%
+  emmeans_test(looking_prob ~ Group2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_looking_prob_interact)
+             
+Teig_RM_ANOVA_looking_prob_zonos <- Gaze_erotic %>%
+  emmeans_test(looking_prob ~ AOI2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_looking_prob_zonos)
+
+Teig_RM_ANOVA_looking_prob_grupe <- Gaze_erotic %>%
+  emmeans_test(looking_prob ~Group2, p.adjust.method = "holm")
+print(Teig_RM_ANOVA_looking_prob_grupe)
+```
+
+# Pupillary parameters
+
+## Neutral
+
+```{r}
+
+##### NEUTRALUS
+  LT_amplit_neurtral <- aov(LR_amplit_neutral ~ Group2, data = Pupil_neutral)
+summary(LT_amplit_neurtral)
+pairwise.t.test(Pupil_neutral$LR_amplit_neutral, Pupil_neutral$Group2, p.adjust.method = "holm")
+
+  LT_latency_neurtral <- aov(LR_latency_neutral ~ Group2, data = Pupil_neutral)
+summary(LT_latency_neurtral)
+pairwise.t.test(Pupil_neutral$LR_latency_neutral, Pupil_neutral$Group2, p.adjust.method = "holm")
+
+  Slope_neutral <- aov(Slope_neutral ~ Group2, data = Pupil_neutral)
+summary(Slope_neutral)
+pairwise.t.test(Pupil_neutral$Slope_neutral, Pupil_neutral$Group2, p.adjust.method = "holm")
+
+  AUC_neutral <- aov(AUC_neutral ~ Group2, data = Pupil_neutral)
+summary(AUC_neutral)
+pairwise.t.test(Pupil_neutral$AUC_neutral, Pupil_neutral$Group2, p.adjust.method = "holm")
+
+  Mean_diameter_neutral <- aov(Mean_diameter_neutral ~ Group2, data = Pupil_neutral)
+summary(Mean_diameter_neutral)
+pairwise.t.test(Pupil_neutral$Mean_diameter_neutral, Pupil_neutral$Group2, p.adjust.method = "holm")
+```
+
+## Negative
+
+```{r}
+
+  LR_amplit_negative <- aov(LR_amplit_negative ~ Group2, data = Pupil_negative)
+summary(LR_amplit_negative)
+pairwise.t.test(Pupil_negative$LR_amplit_negative, Pupil_negative$Group2, p.adjust.method = "holm")
+
+  LR_latency_negative <- aov(LR_latency_negative ~ Group2, data = Pupil_negative)
+summary(LR_latency_negative)
+pairwise.t.test(Pupil_negative$LR_latency_negative, Pupil_negative$Group2, p.adjust.method = "holm")
+
+  Slope_negative <- aov(Slope_negative ~ Group2, data = Pupil_negative)
+summary(Slope_negative)
+pairwise.t.test(Pupil_negative$Slope_negative, Pupil_negative$Group2, p.adjust.method = "holm")
+
+  AUC_negative <- aov(AUC_negative ~ Group2, data = Pupil_negative)
+summary(AUC_negative)
+pairwise.t.test(Pupil_negative$AUC_negative, Pupil_negative$Group2, p.adjust.method = "holm")
+
+Mean_diameter_negative <- aov(Mean_diameter_negative ~ Group2, data = Pupil_negative)
+summary(Mean_diameter_negative)
+pairwise.t.test(Pupil_negative$Mean_diameter_negative, Pupil_negative$Group2, p.adjust.method = "holm")
+
+```
+
+## Erotic
+
+```{r}
+  LR_amplit_ero <- aov(LR_amplit_erotic ~ Group2, data = Pupil_erotic)
+summary(LR_amplit_ero)
+pairwise.t.test(Pupil_erotic$LR_amplit_erotic, Pupil_erotic$Group2, p.adjust.method = "holm")
+
+  LR_latency_erotic <- aov(LR_latency_erotic ~ Group2, data = Pupil_erotic)
+summary(LR_latency_erotic)
+pairwise.t.test(Pupil_erotic$LR_latency_erotic, Pupil_erotic$Group2, p.adjust.method = "holm")
+
+  Slope_erotic <- aov(Slope_erotic ~ Group2, data = Pupil_erotic)
+summary(Slope_erotic)
+pairwise.t.test(Pupil_erotic$Slope_erotic, Pupil_erotic$Group2, p.adjust.method = "holm")
+
+  AUC_erotic <- aov(AUC_erotic ~ Group2, data = Pupil_erotic)
+summary(AUC_erotic)
+pairwise.t.test(Pupil_erotic$AUC_erotic, Pupil_erotic$Group2, p.adjust.method = "holm")
+
+  Mean_diameter_erotic <- aov(Mean_diameter_erotic ~ Group2, data = Pupil_erotic)
+summary(Mean_diameter_erotic)
+pairwise.t.test(Pupil_erotic$Mean_diameter_erotic, Pupil_erotic$Group2, p.adjust.method = "holm")
+```
