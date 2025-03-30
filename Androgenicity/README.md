@@ -5,7 +5,35 @@ Zelionkaite
 
 ``` r
 library("tidyverse")
+```
+
+    Warning: paketas 'tidyverse' buvo sukurtas pagal R versiją 4.4.1
+
+    Warning: paketas 'lubridate' buvo sukurtas pagal R versiją 4.4.1
+
+    ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ✔ dplyr     1.1.4     ✔ readr     2.1.5
+    ✔ forcats   1.0.0     ✔ stringr   1.5.1
+    ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+    ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+    ✔ purrr     1.0.2     
+    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ✖ dplyr::filter() masks stats::filter()
+    ✖ dplyr::lag()    masks stats::lag()
+    ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+``` r
 library("rstatix")
+```
+
+
+    Pridedamas paketas: 'rstatix'
+
+    Šis objektas yra užmaskuotas nuo 'package:stats':
+
+        filter
+
+``` r
 library("emmeans")
 library("dplyr")
 ```
@@ -27,6 +55,9 @@ Gaze_neutral_anti%>%
   summarise(M = mean(dwell_time),
             SD = sd(dwell_time))
 ```
+
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
@@ -128,6 +159,9 @@ Gaze_neutral_mini%>%
   summarise(M = mean(dwell_time),
             SD = sd(dwell_time))
 ```
+
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
@@ -232,6 +266,9 @@ Gaze_neutral_anti%>%
             SD = sd(return_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
+
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
       Group2 AOI2           M     SD
@@ -332,6 +369,9 @@ Gaze_neutral_mini%>%
   summarise(M = mean(return_prob),
             SD = sd(return_prob))
 ```
+
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
@@ -436,6 +476,9 @@ Gaze_neutral_anti%>%
             SD = sd(looking_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
+
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
       Group2 AOI2            M     SD
@@ -537,6 +580,9 @@ Gaze_neutral_mini%>%
             SD = sd(looking_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
+
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
       Group2 AOI2            M     SD
@@ -632,7 +678,7 @@ print(Neut_RM_ANOVA_looking_prob_grupe)
 
 ## Negative
 
-### Ziurejimo procentas
+### Dwell time
 
 ``` r
 ## Only anti-androgenic OC-users
@@ -642,6 +688,9 @@ Gaze_negative_anti%>%
   summarise(M = mean(dwell_time),
             SD = sd(dwell_time))
 ```
+
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
@@ -750,6 +799,9 @@ Gaze_negative_mini%>%
   summarise(M = mean(dwell_time),
             SD = sd(dwell_time))
 ```
+
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
@@ -860,6 +912,9 @@ Gaze_negative_anti%>%
             SD = sd(return_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
+
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
       Group2 AOI2            M     SD
@@ -966,6 +1021,9 @@ Gaze_negative_mini%>%
   summarise(M = mean(return_prob),
             SD = sd(return_prob))
 ```
+
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
@@ -1076,6 +1134,8 @@ Gaze_negative_anti%>%
             SD = sd(looking_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
@@ -1184,6 +1244,8 @@ Gaze_negative_mini%>%
             SD = sd(looking_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 9 × 4
     # Groups:   Group2 [3]
@@ -1296,6 +1358,8 @@ Gaze_erotic_anti%>%
             SD = sd(dwell_time))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 12 × 4
     # Groups:   Group2 [3]
@@ -1413,6 +1477,8 @@ Gaze_erotic_mini%>%
             SD = sd(dwell_time))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 12 × 4
     # Groups:   Group2 [3]
@@ -1532,6 +1598,8 @@ Gaze_erotic_anti%>%
             SD = sd(return_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 12 × 4
     # Groups:   Group2 [3]
@@ -1649,6 +1717,8 @@ Gaze_erotic_mini%>%
             SD = sd(return_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 12 × 4
     # Groups:   Group2 [3]
@@ -1768,6 +1838,9 @@ Gaze_erotic_anti%>%
             SD = sd(looking_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
+
     # A tibble: 12 × 4
     # Groups:   Group2 [3]
        Group2 AOI2             M      SD
@@ -1884,6 +1957,8 @@ Gaze_erotic_mini%>%
             SD = sd(looking_prob))
 ```
 
+    `summarise()` has grouped output by 'Group2'. You can override using the
+    `.groups` argument.
 
     # A tibble: 12 × 4
     # Groups:   Group2 [3]
@@ -2079,9 +2154,9 @@ pairwise.t.test(Pupil_neutral_anti$Slope_neutral, Pupil_neutral_anti$Group2, p.a
 summary(AUC_neutral)
 ```
 
-                Df   Sum Sq Mean Sq F value  Pr(>F)   
-    Group2       2  1169563  584782    5.14 0.00756 **
-    Residuals   97 11036424  113778                   
+                Df   Sum Sq Mean Sq F value Pr(>F)  
+    Group2       2  1095422  547711   4.645 0.0118 *
+    Residuals   97 11438361  117921                 
     ---
     Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -2095,8 +2170,8 @@ pairwise.t.test(Pupil_neutral_anti$AUC_neutral, Pupil_neutral_anti$Group2, p.adj
     data:  Pupil_neutral_anti$AUC_neutral and Pupil_neutral_anti$Group2 
 
        Men   NC   
-    NC 0.015 -    
-    OC 0.024 0.951
+    NC 0.018 -    
+    OC 0.048 0.782
 
     P value adjustment method: holm 
 
@@ -2209,8 +2284,8 @@ summary(AUC_neutral)
 ```
 
                  Df   Sum Sq Mean Sq F value  Pr(>F)   
-    Group2        2  1320597  660299   5.786 0.00417 **
-    Residuals   102 11640715  114125                   
+    Group2        2  1179646  589823   5.112 0.00766 **
+    Residuals   102 11769635  115389                   
     ---
     Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -2224,8 +2299,8 @@ pairwise.t.test(Pupil_neutral_mini$AUC_neutral, Pupil_neutral_mini$Group2, p.adj
     data:  Pupil_neutral_mini$AUC_neutral and Pupil_neutral_mini$Group2 
 
        Men   NC   
-    NC 0.011 -    
-    OC 0.011 0.836
+    NC 0.016 -    
+    OC 0.020 0.905
 
     P value adjustment method: holm 
 
@@ -2340,9 +2415,11 @@ pairwise.t.test(Pupil_negative_anti$Slope_negative, Pupil_negative_anti$Group2, 
 summary(AUC_negative)
 ```
 
-                Df   Sum Sq Mean Sq F value Pr(>F)
-    Group2       2   941930  470965   2.262   0.11
-    Residuals   96 19991142  208241               
+                Df   Sum Sq Mean Sq F value Pr(>F)  
+    Group2       2  1192286  596143   2.813  0.065 .
+    Residuals   96 20344045  211917                 
+    ---
+    Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 ``` r
 pairwise.t.test(Pupil_negative_anti$AUC_negative, Pupil_negative_anti$Group2, p.adjust.method = "holm")
@@ -2355,7 +2432,7 @@ pairwise.t.test(Pupil_negative_anti$AUC_negative, Pupil_negative_anti$Group2, p.
 
        Men  NC  
     NC 0.13 -   
-    OC 0.74 0.28
+    OC 0.81 0.13
 
     P value adjustment method: holm 
 
@@ -2468,9 +2545,11 @@ pairwise.t.test(Pupil_negative_mini$Slope_negative, Pupil_negative_mini$Group2, 
 summary(AUC_negative)
 ```
 
-                 Df   Sum Sq Mean Sq F value Pr(>F)
-    Group2        2   901365  450683   2.133  0.124
-    Residuals   100 21132225  211322               
+                 Df   Sum Sq Mean Sq F value Pr(>F)  
+    Group2        2  1007481  503741   2.367  0.099 .
+    Residuals   100 21278200  212782                 
+    ---
+    Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 ``` r
 pairwise.t.test(Pupil_negative_mini$AUC_negative, Pupil_negative_mini$Group2, p.adjust.method = "holm")
@@ -2483,7 +2562,7 @@ pairwise.t.test(Pupil_negative_mini$AUC_negative, Pupil_negative_mini$Group2, p.
 
        Men  NC  
     NC 0.14 -   
-    OC 0.59 0.36
+    OC 0.85 0.19
 
     P value adjustment method: holm 
 
@@ -2599,8 +2678,8 @@ summary(AUC_erotic)
 ```
 
                 Df   Sum Sq Mean Sq F value Pr(>F)
-    Group2       2   695661  347830   1.629  0.202
-    Residuals   92 19644247  213524               
+    Group2       2   305633  152816   0.682  0.508
+    Residuals   92 20616566  224093               
 
 ``` r
 pairwise.t.test(Pupil_erotic_anti$AUC_erotic, Pupil_erotic_anti$Group2, p.adjust.method = "holm")
@@ -2612,8 +2691,8 @@ pairwise.t.test(Pupil_erotic_anti$AUC_erotic, Pupil_erotic_anti$Group2, p.adjust
     data:  Pupil_erotic_anti$AUC_erotic and Pupil_erotic_anti$Group2 
 
        Men  NC  
-    NC 0.31 -   
-    OC 0.32 0.92
+    NC 0.77 -   
+    OC 0.91 0.91
 
     P value adjustment method: holm 
 
