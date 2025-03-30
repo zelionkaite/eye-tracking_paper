@@ -22,7 +22,7 @@ legendai_top <- ggplot(Figure_gaze_erotic, aes(x=AOI2, y=dwell_time, fill=factor
     labs(x = '', y = 'Percentage, %', title = 'Dwell Time') +
     theme(plot.title = element_text(hjust = 0, vjust=1, size = 30, face = 'bold', color = 'black'),
           text = element_text(size = 30, color = 'black'))+
-      scale_fill_manual('', values = c('NC' = 'sandybrown', 'OC' = 'darkturquoise', 'Men' = 'springgreen3')) +
+      scale_fill_manual('', values = c("NC" = "sandybrown", "OC" = "darkturquoise", "Men" = "springgreen3")) +
   theme(legend.position="top", legend.margin = margin(t = -50, r = 0, b = 0, l = 0))+
      scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), 
                      limits = c("Background", "Erogenous area", "Body", "Face"))+
@@ -43,7 +43,7 @@ shared_legend200 <- get_legend(legendai_top)
 dwell_time_neut <- ggplot(Figure_gaze_neutral) +
     aes(x = AOI2, y = dwell_time, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 123, jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 10, jitter.height = 0.2)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Dwell Time, %', title = 'Percentage of Dwell Time') +
@@ -69,7 +69,7 @@ dwell_time_neut <- ggplot(Figure_gaze_neutral) +
 looking_prob_neutral <- ggplot(Figure_gaze_neutral) +
     aes(x = AOI2, y = looking_prob, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 123, jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 10, jitter.height = 0.2)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Probability', title = 'Looking Probability') +
@@ -83,13 +83,12 @@ looking_prob_neutral <- ggplot(Figure_gaze_neutral) +
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
-    
 
 ``` r
 return_prob_neutral <- ggplot(Figure_gaze_neutral) +
     aes(x = AOI2, y = return_prob, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter( position = position_jitterdodge(jitter.width = 0.2, seed = 123, jitter.height = 0.2)) +
+    geom_jitter( position = position_jitterdodge(jitter.width = 0.2, seed = 10, jitter.height = 0.1)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Probability', title = 'Return Probability') +
@@ -101,14 +100,13 @@ return_prob_neutral <- ggplot(Figure_gaze_neutral) +
     scale_fill_manual('', values = c("NC" = "sandybrown", "OC" = "darkturquoise", "Men" = "springgreen3"))+
     scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 0.01), limits = c("Background", "Body", "Face")) +
  guides(fill = FALSE)+
- stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))+
-      annotate("text", x = 2.85, y = 0.62, label = "*", size = 9, color = "black")+ 
-    geom_segment(aes(x = 2.7, xend = 3, y = 0.61, yend = 0.61), color = "black", size = 0.5)+
-    annotate("text", x = 3, y = 0.71, label = "*", size = 9, color = "black")+ 
-    geom_segment(aes(x = 2.7, xend = 3.3, y = 0.69, yend = 0.69), color = "black", size = 0.5)
+stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))+
+    annotate("text", x = 2.85, y = 0.55, label = "*", size = 9, color = "black")+ 
+    geom_segment(aes(x = 2.7, xend = 3, y = 0.53, yend = 0.53), color = "black", size = 0.5)+
+    annotate("text", x = 3, y = 0.60, label = "*", size = 9, color = "black")+ 
+    geom_segment(aes(x = 2.7, xend = 3.3, y = 0.58, yend = 0.58), color = "black", size = 0.5)
 ```
 
- 
 
 ### Whole figure
 
@@ -119,11 +117,11 @@ grid.arrange(
     arrangeGrob(
         dwell_time_neut, looking_prob_neutral, return_prob_neutral,
         ncol = 1, nrow = 3, heights = c(3, 3, 3)),
-    ncol = 1, heights = c(1, 20))
+    ncol = 1, heights = c(1, 10))
 ```
 
-![](Gaze_neutral.png)
 
+![](Gaze_neutral.png)
 
 ## Negative
 
@@ -133,7 +131,7 @@ grid.arrange(
 dwell_time_negative <- ggplot(Figure_gaze_negative) +
     aes(x = AOI2, y = dwell_time, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 123,jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 15,jitter.height = 0.2)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Dwell Time, %', title = 'Percentage of Dwell Time') +
@@ -150,13 +148,12 @@ dwell_time_negative <- ggplot(Figure_gaze_negative) +
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
-   
 
 ``` r
 looking_prob_negative <- ggplot(Figure_gaze_negative) +
     aes(x = AOI2, y = looking_prob, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 123,jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 10,jitter.height = 0.2)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Probability', title = 'Looking Probability') +
@@ -170,13 +167,12 @@ looking_prob_negative <- ggplot(Figure_gaze_negative) +
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
-   
 
 ``` r
 return_prob_negative <- ggplot(Figure_gaze_negative) +
     aes(x = AOI2, y = return_prob, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 123,jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 10,jitter.height = 0.1)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Probability', title = 'Return Probability') +
@@ -200,7 +196,7 @@ grid.arrange(
     arrangeGrob(
         dwell_time_negative, looking_prob_negative, return_prob_negative,
         ncol = 1, nrow = 3, heights = c(3, 3, 3)),
-    ncol = 1, heights = c(1, 20))
+    ncol = 1, heights = c(1, 10))
 ```
 
 ![](Gaze_negative.png)
@@ -213,7 +209,7 @@ grid.arrange(
 dwell_time_erotic <- ggplot(Figure_gaze_erotic) +
     aes(x = AOI2, y = dwell_time, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 123, jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 10, jitter.height = 0.2)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Dwell Time, %', title = 'Percentage of Dwell Time') +
@@ -236,11 +232,12 @@ dwell_time_erotic <- ggplot(Figure_gaze_erotic) +
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
+
 ``` r
 looking_prob_erotic <- ggplot(Figure_gaze_erotic) +
     aes(x = AOI2, y = looking_prob, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 123, jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 10, jitter.height = 0.2)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Probability', title = 'Looking Probability') +
@@ -255,13 +252,13 @@ looking_prob_erotic <- ggplot(Figure_gaze_erotic) +
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
-   
+
 
 ``` r
 return_prob_erotic <- ggplot(Figure_gaze_erotic) +
     aes(x = AOI2, y = return_prob, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 123, jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed = 1, jitter.height = 0.1)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Probability', title = 'Return Probability') +
@@ -280,6 +277,7 @@ return_prob_erotic <- ggplot(Figure_gaze_erotic) +
 ```
 
 
+
 ### Whole figure
 
 ``` r
@@ -289,9 +287,12 @@ grid.arrange(
     arrangeGrob(
         dwell_time_erotic, looking_prob_erotic, return_prob_erotic,
         ncol = 1, nrow = 3, heights = c(3, 3, 3)),
-    ncol = 1, heights = c(1, 20))
+    ncol = 1, heights = c(1, 10))
 ```
+
+    
 ![](Gaze_erotic.png)
+
 
 ## PUPIL
 
@@ -310,7 +311,7 @@ Dynamics_neutral <- ggplot(data = Pupil_dynamics, aes(x = Time_sec, y = Neutral,
           text = element_text(size = 30, family = 'Times New Roman', color = 'black'),
           axis.text.x = element_text(angle = 0, family = 'Times New Roman', color = 'black'),
           axis.text.y = element_text(family = 'Times New Roman', color = 'black'))+
-  scale_color_manual('Group', values = c('NC' = 'sandybrown', 'OC' = 'darkturquoise', 'Men' = 'springgreen3'))+
+  scale_color_manual('Group', values = c("NC" = "sandybrown", "OC" = "darkturquoise", "Men" = "springgreen3"))+
   annotate("segment", x = 0, xend = 0, y = -0.6, yend = Inf, colour = "black", linetype=c("dashed")) +
   annotate("text", x = -0.2,  y = -0.60, label="Stimulus", size=6.5, hjust=0,  angle=90, colour = "black")+
   annotate("rect", xmin=2, xmax=5, ymin=-0.60, ymax=Inf, alpha=0.1, fill="#3d03fc")+
@@ -331,7 +332,7 @@ Pupil_neutral <- ggplot(Pupil_mean_neutral) +
 #        aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
 #        fill = "#fcd303", alpha = 0.002, inherit.aes = FALSE)+
     geom_boxplot() +
-    geom_jitter( position = position_jitterdodge(jitter.width = 0.2, seed=123)) +
+    geom_jitter( position = position_jitterdodge(jitter.width = 0.2, seed=10)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Baseline-corrected pupil diameter, mm', title = '') +
@@ -377,7 +378,6 @@ Pupil_neutral <- ggplot(Pupil_mean_neutral) +
     stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
-    
 
 ## Negative
 
@@ -394,7 +394,7 @@ Dynamics_negative <- ggplot(data = Pupil_dynamics, aes(x = Time_sec, y = Negativ
           text = element_text(size = 30, family = 'Times New Roman', color = 'black'),
           axis.text.x = element_text(angle = 0, family = 'Times New Roman', color = 'black'),
           axis.text.y = element_text(family = 'Times New Roman', color = 'black'))+
-    scale_color_manual('Group', values = c('NC' = 'sandybrown', 'OC' = 'darkturquoise', 'Men' = 'springgreen3'))+
+    scale_color_manual('Group', values = c("NC" = "sandybrown", "OC" = "darkturquoise", "Men" = "springgreen3"))+
   annotate("segment", x = 0, xend = 0, y = -0.6, yend = Inf, colour = "black", linetype=c("dashed")) +
   annotate("text", x = -0.2,  y = -0.60, label="Stimulus", size=6.5, hjust=0,  angle=90, colour = "black")+
   annotate("rect", xmin=2, xmax=5, ymin=-0.60, ymax=Inf, alpha=0.1, fill="#3d03fc")+
@@ -415,7 +415,7 @@ Pupil_negative <- ggplot(Pupil_mean_negative) +
 #        aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
 #        fill = "#fcd303", alpha = 0.002, inherit.aes = FALSE)+
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed=123)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed=10)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Baseline-corrected pupil diameter, mm', title = '') +
@@ -461,7 +461,6 @@ Pupil_negative <- ggplot(Pupil_mean_negative) +
     stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
-    
 
 ## Erotic
 
@@ -478,7 +477,7 @@ Dynamics_erotic <- ggplot(data = Pupil_dynamics, aes(x = Time_sec, y = Erotic, c
           text = element_text(size = 30, family = 'Times New Roman', color = 'black'),
           axis.text.x = element_text(angle = 0, family = 'Times New Roman', color = 'black'),
           axis.text.y = element_text(family = 'Times New Roman', color = 'black'))+
-    scale_color_manual('Group', values = c('NC' = 'sandybrown', 'OC' = 'darkturquoise', 'Men' = 'springgreen3'))+
+    scale_color_manual('Group', values = c("NC" = "sandybrown", "OC" = "darkturquoise", "Men" = "springgreen3"))+
     #  annotate("rect", xmin=2.1, xmax=5, ymin=-0.60, ymax=Inf, alpha=0.2, fill="#f55376") +
     annotate("segment", x = 0, xend = 0, y = -0.60, yend = Inf, colour = "black", linetype=c("dashed")) +
     annotate("text", x = -0.2,  y = -0.60, label="Stimulus", size=6.5, hjust=0,  angle=90, colour = "black")+
@@ -500,7 +499,7 @@ Pupil_erotic <- ggplot(Pupil_mean_erotic) +
 #        aes(xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf),
  #       fill = "#fcd303", alpha = 0.002, inherit.aes = FALSE)+
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed=123)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed=10)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Baseline-corrected pupil diameter, mm', title = '') +
@@ -547,8 +546,6 @@ Pupil_erotic <- ggplot(Pupil_mean_erotic) +
     stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
 
-    
-
 ## Whole figure
 
 ``` r
@@ -568,10 +565,11 @@ grid.arrange(
             ncol = 1, nrow = 3),
             ncol = 2),
             nrow = 2,
-            heights = c(1, 20))
+            heights = c(1, 10))
 ```
 
 ![](Pupil_no_colours.png)
+    
 
 # Self-reported
 
@@ -580,7 +578,7 @@ grid.arrange(
 ggplot(self_reported) +
     aes(x = Valence2, y = values, fill = reorder(Group2, as.numeric(factor(Group2, levels = c("NC", "OC", "Men"))))) +
     geom_boxplot() +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed=123, jitter.height = 0.2)) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2, seed=10, jitter.height = 0.1)) +
     scale_fill_hue(direction = 1) +
     theme_test() +
     labs(x = '', y = 'Self-reported evaluation', title = '') +
@@ -614,4 +612,5 @@ ggplot(self_reported) +
         size = 0.5)+
  stat_summary(fun = mean, geom = "point", shape = 16, size = 2, color = "#fcd303", position = position_dodge(width = 0.75))
 ```
-![](self_reported.png)
+
+![](Self_reported.png)
